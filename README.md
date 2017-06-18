@@ -8,3 +8,9 @@ This command is similar to `rm -ri`, but it confirms only once.
 ```
 rr file.txt directory/
 ```
+
+## Installation
+
+```
+go get github.com/fjyuu/rr
+```
