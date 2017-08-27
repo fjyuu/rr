@@ -6,6 +6,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/dustin/go-humanize"
 )
 
 type FilesSummary struct {
@@ -35,8 +37,8 @@ func execute(paths []string) error {
 		return err
 	}
 
-	fmt.Printf("%d directories, %d files (%d Bytes)\n",
-		summary.Dirs, summary.Files, summary.FileSizeSum)
+	fmt.Printf("%d directories, %d files (%s)\n",
+		summary.Dirs, summary.Files, humanize.Bytes(uint64(summary.FileSizeSum)))
 	removeOk, err := confirm(fmt.Sprintf("remove %s?", strings.Join(paths, ", ")))
 	if err != nil {
 		return err
